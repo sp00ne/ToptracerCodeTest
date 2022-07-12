@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk versions.compileSdk
+
+    defaultConfig {
+        applicationId "com.farzonestudios.toptracer"
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
+
+        def versionPropsFile = file('version.properties')
+        Properties versionProps = new Properties()
+
+        if (versionPropsFile.canRead()) {
+            versionProps.load(new FileInputStream(versionPropsFile))
+        }
+        def versionPropCode = versionProps['version.code'].toInteger()
+        def versionPropName = versionProps['version.name']
+
+        versionCode versionPropCode
+        versionName versionPropName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "GIPHY_KEY", "\"86v1UHfNxBtni7PkSSdURmHP6LWfN6f4\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+
+        // Enable the use of java.time for lower APIs
+        coreLibraryDesugaringEnabled = true
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation deps.android.core
+    implementation deps.android.appcompat
+    implementation deps.android.material
+    implementation deps.android.constraintLayout
+    implementation deps.android.hilt
+    implementation deps.android.hiltNavigation
+    implementation deps.android.viewmodel
+    implementation deps.android.navFragment
+    implementation deps.android.navUi
+    implementation deps.android.coroutines
+    implementation deps.android.datastorePreference
+    kapt deps.kapt.hiltAnnotations
+
+    implementation deps.network.retrofit
+    implementation deps.network.okhttpLogging
+    implementation deps.network.gsonConverter
+
+    implementation deps.other.coil
+    implementation deps.other.coilGif
+
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+
+    coreLibraryDesugaring deps.desugar.jdkLibs
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.androidTest.junit
+    androidTestImplementation deps.androidTest.espressoCore
+}

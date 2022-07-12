@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Toptracer</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="logout">Logout</string>
+    <string name="gif_content_description">A random gif</string>
+    <string name="welcome_formatted">Welcome %s</string>
+    <string name="gif_load_fail">Could not load GIF! Something went wrong</string>
+    <string name="error_network">There seems to be a network error!</string>
+</resources>

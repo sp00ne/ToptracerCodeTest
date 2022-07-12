@@ -1,0 +1,80 @@
+ext.versions = [
+        "minSdk"             : 23,
+        "compileSdk"         : 32,
+        "targetSdk"          : 32,
+
+
+        // Android
+        "androidCore"        : "1.8.0",
+        "appcompat"          : "1.4.2",
+        "material"           : "1.6.1",
+        "constraintLayout"   : "2.1.4",
+        "hilt"               : "2.40.5",
+        "hiltNavigation"     : "1.0.0",
+        "lifecycle"          : "2.5.0",
+        "navigation"         : "2.5.0",
+        "coroutines"         : "1.6.1",
+        "datastorePreference": "1.0.0",
+
+        // Network
+        "retrofit"           : "2.9.0",
+        "okhttp"             : "4.10.0",
+
+        // Other
+        "coil"               : "2.1.0",
+
+        // Desugar
+        "jdkDesugar"         : "1.1.5",
+
+        // Test
+        "junit"              : "4.13.2",
+        "androidJunit"       : "1.1.3",
+        "espresso"           : "3.4.0"
+]
+
+ext.deps = [
+        plugin       : [
+                "hiltGradlePlugin": "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}",
+        ],
+
+        android      : [
+                "core"               : "androidx.core:core-ktx:${versions.androidCore}",
+                "appcompat"          : "androidx.appcompat:appcompat:${versions.appcompat}",
+                "material"           : "com.google.android.material:material:${versions.material}",
+                "constraintLayout"   : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+                "hilt"               : "com.google.dagger:hilt-android:${versions.hilt}",
+                "hiltNavigation"     : "androidx.hilt:hilt-navigation-fragment:${versions.hiltNavigation}",
+                "viewmodel"          : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+                "navFragment"        : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+                "navUi"              : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+                "coroutines"         : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
+                "datastorePreference": "androidx.datastore:datastore-preferences:${versions.datastorePreference}"
+        ],
+
+        kapt         : [
+                "hiltAnnotations": "com.google.dagger:hilt-compiler:${versions.hilt}"
+        ],
+
+        network      : [
+                "retrofit"     : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                "okhttpLogging": "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+                "gsonConverter": "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+        ],
+
+        desugar      : [
+                "jdkLibs": "com.android.tools:desugar_jdk_libs:${versions.jdkDesugar}"
+        ],
+
+        other        : [
+                "coil"   : "io.coil-kt:coil-base:${versions.coil}",
+                "coilGif": "io.coil-kt:coil-gif:${versions.coil}"
+        ],
+
+        "test"       : [
+                "junit": "junit:junit:${versions.junit}"
+        ],
+        "androidTest": [
+                "junit"       : "androidx.test.ext:junit:${versions.androidJunit}",
+                "espressoCore": "androidx.test.espresso:espresso-core:${versions.espresso}"
+        ],
+]
